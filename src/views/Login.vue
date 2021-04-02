@@ -64,7 +64,7 @@ export default {
     },
     async cadastrar() {
       await this.$http
-        .post(`${this.$$baseUrl}/login/`, this.user)
+        .post(`${this.$baseUrl}/login/`, this.user)
         .then(() => (this.showSignup = false));
     },
     async authenticate() {

@@ -15,7 +15,7 @@
       <div class="menu">
         <ul>
           <li>
-            <router-link to="/dashboard"
+            <router-link to="/"
               ><i class="fa fa-home" /> Inicio</router-link
             >
           </li>
@@ -52,6 +52,7 @@
         <slot name="slot-pages"> </slot>
       </div>
     </div>
+    <router-view />
   </div>
 </template>
 
@@ -59,7 +60,7 @@
 export default {
   methods: {
     logout() {
-      this.$router.push({ name: "/" });
+      this.$router.push({ name: "/login" });
     },
   },
 };
