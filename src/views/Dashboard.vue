@@ -57,12 +57,21 @@
 </template>
 
 <script>
+import {signOut,isSignedIn} from '../auth'
 export default {
   methods: {
     logout() {
-      this.$router.push({ name: "/login" });
+        signOut()
+        this.$router.push("/login");
     },
+    async authenticate(){
+        let signed = await isSignedIn(this.$baseUrl);
+        if(!signed) this.$router.push('/login')
+    }
   },
+  async mounted(){
+    await this.authenticate()
+  }
 };
 </script>
 

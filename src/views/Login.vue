@@ -8,21 +8,21 @@
 
         <input
           v-if="showSignup"
-          v-model="user.name"
+          v-model="user.nome"
           type="text"
           placeholder="Nome"
         />
         <input v-model="user.email" type="text" placeholder="E-mail" />
-        <input v-model="user.password" type="password" placeholder="Senha" />
+        <input v-model="user.senha" type="password" placeholder="Senha" />
         <input
           v-if="showSignup"
-          v-model="user.confirmPassword"
+          v-model="user.confirmSenha"
           type="password"
           placeholder="Confirme a Senha"
         />
 
-        <button v-if="showSignup" @click="cadastrar">Cadastrar</button>
-        <button v-else @click="onSubmit">Entrar</button>
+        <button v-if="showSignup" @click.prevent="VerifyCadastro">Cadastrar</button>
+        <button v-else @click.prevent="onSubmit">Entrar</button>
 
         <hr>
         <a href @click.prevent="showSignup = !showSignup">
@@ -43,7 +43,12 @@ export default {
   data: function() {
     return {
       showSignup: false,
-      user: {},
+      user: {
+        nopme:'',
+        email:'',
+        senha:'',
+        confirmSenha:''
+      },
     };
   },
   methods: {
@@ -51,7 +56,7 @@ export default {
       let result = await signIn(
         this.$baseUrl,
         this.user.email,
-        this.user.password
+        this.user.senha
       );
       if (result.success && Object.keys(result).includes("token")) {
         Vue.axios.defaults.headers.common[
@@ -62,10 +67,17 @@ export default {
         alert("Usuario ou senha Incorretos");
       }
     },
+    async VerifyCadastro(){
+        if(this.confirmSenha === this.senha){
+            await this.cadastrar()
+        }
+    },
     async cadastrar() {
       await this.$http
-        .post(`${this.$baseUrl}/login/`, this.user)
-        .then(() => (this.showSignup = false));
+        .post(`${this.$baseUrl}/usuario/`, this.user)
+        .then(() => {
+            this.showSignup = false;    
+        });
     },
     async authenticate() {
       let signed = await isSignedIn(this.$baseUrl);
