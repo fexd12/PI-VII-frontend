@@ -44,7 +44,7 @@ export default {
     return {
       showSignup: false,
       user: {
-        nopme:'',
+        nome:'',
         email:'',
         senha:'',
         confirmSenha:''
