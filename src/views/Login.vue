@@ -2,8 +2,11 @@
   <div class="auth-content">
     <div class="auth-modal">
       <form @submit.prevent="onSubmit()">
-        <img src="@/assets/logo.png" width="270" alt="Logo" class="Logo" />
-        <hr />
+        <div class="logo">
+          <div>Esteira</div>
+          <div>Inteligente</div>
+        </div>
+        <hr class="espacamento-bottom">
         <div class="auth-title">{{ showSignup ? "Cadastro" : "Login" }}</div>
 
         <input
@@ -24,7 +27,7 @@
         <button v-if="showSignup" @click.prevent="VerifyCadastro">Cadastrar</button>
         <button v-else @click.prevent="onSubmit">Entrar</button>
 
-        <hr>
+        <hr class="espacamento-top">
         <a href @click.prevent="showSignup = !showSignup">
           <span v-if="showSignup"> Já tem cadastro? Faça o Login!</span>
           <span v-else>Não tem cadastro? Cadastra-se já </span>
@@ -95,6 +98,22 @@ export default {
 
 <style>
 
+.logo {
+  font-family: AldotheApache;
+  color: #2460ae !important;
+  font-size: 50px;
+  padding-bottom: 30px;
+  padding-top: 25px;
+}
+
+.espacamento-top {
+  margin-top: 40px;
+}
+
+.espacamento-bottom {
+  margin-bottom: 40px;
+}
+
 .auth-content {
   height: 100%;
   display: flex;
@@ -104,10 +123,9 @@ export default {
 
 .auth-modal {
   background-color: #fff;
-  width: 350px;
+  width: 400px;
   padding: 35px;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
-
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -118,21 +136,26 @@ export default {
   font-weight: 100;
   margin-top: 10px;
   margin-bottom: 15px;
+  font-weight: bold;
+  color: #2C2D2E;
 }
 
 .auth-modal input {
-  border: 1px solid #bbb;
-  width: 100%;
+  border: 1px solid #434545;
+  width: 80%;
   margin-bottom: 15px;
   padding: 3px 8px;
   outline: none;
+  background-color: #A0A4A5;
 }
 
 .auth-modal button {
   align-self: flex-end;
-  background-color: #2460ae;
-  color: #fff;
+  background-color: #6EF474;
+  color: black !important;
   padding: 5px 15px;
+  font-weight: bold;
+  border-radius: 8px;
 }
 
 .auth-modal a {
@@ -142,12 +165,12 @@ export default {
 .auth-modal hr {
   border: 0;
   width: 100%;
-  height: 1px;
+  height: 2px;
   background-image: linear-gradient(
     to right,
-    rgba(120, 120, 120, 0),
-    rgba(10, 120, 120, 0.75),
-    rgba(120, 120, 120, 0)
+    #636566,
+    #434546,
+    #2C2D2E
   );
 }
 

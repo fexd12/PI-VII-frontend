@@ -8,11 +8,10 @@
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  
+  background-image: linear-gradient(#686C6F, #335476);
+  height: 100%;
 }
 
 #nav {
@@ -26,5 +25,11 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+
+@font-face {
+  font-family: "AldotheApache";
+  src: local("AldotheApache"),
+   url(./fonts/AldotheApache.ttf) format("truetype");
 }
 </style>
