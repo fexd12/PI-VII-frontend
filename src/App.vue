@@ -1,16 +1,27 @@
 <template>
   <div id="app">
-
+    <!-- <dashboard /> -->
     <router-view/>
   </div>
 </template>
 
+<script>
+// import Dashboard from "./views/Dashboard";
+export default {
+  components: {
+    // Dashboard,
+  },
+};
+</script>
+
+<style>
+</style>
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
   color: #2c3e50;
-  background-image: linear-gradient(#686C6F, #335476);
+  background-image: linear-gradient(#686c6f, #335476);
   height: 100%;
 }
 
@@ -29,7 +40,6 @@
 
 @font-face {
   font-family: "AldotheApache";
-  src: local("AldotheApache"),
-   url(./fonts/AldotheApache.ttf) format("truetype");
+  src: local("AldotheApache"), url(./fonts/AldotheApache.ttf) format("truetype");
 }
 </style>

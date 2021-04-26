@@ -10,55 +10,25 @@
           <p class="name">Gabriel Torrezan</p>
           <p class="status">Online</p>
         </div>
-      </div>
+    
 
-      <div class="menu">
-        <ul>
-          <li>
-            <router-link to="/"
-              ><i class="fa fa-home" /> Inicio</router-link
-            >
-          </li>
-          <li>
-            <router-link to="/rastreio">
-              <i class="fas fa-map-marked-alt" /> Rastreamento do
-              Produto</router-link
-            >
-          </li>
-          <li>
-            <router-link to="/scanner">
-              <i class="fas fa-qrcode" /> Scaneamento do Produto</router-link
-            >
-          </li>
-          <li>
-            <router-link to="/contato">
-              <i class="fas fa-envelope" /> Contato</router-link
-            >
-          </li>
-          <li></li>
-        </ul>
-      </div>
+
     </div>
 
-    <div class="content-right">
-      <div class="navbar">
-        <h3 class="logo"><i class="fa fa-star" />Dashboard</h3>
-        <a href="" @click.prevent="logout" class="logout"
-          ><i class="fas fa-sign-out-alt" />Sair</a
-        >
-      </div>
+    <!-- <side-bar /> -->
 
-      <div class="pages">
-        <slot name="slot-pages"> </slot>
-      </div>
-    </div>
-    <router-view />
+    <!-- <router-view /> -->
   </div>
+  </div>
+
 </template>
 
 <script>
-import {signOut,isSignedIn} from '../auth'
+import {signOut,isSignedIn} from '../auth';
+// import SideBar from './Sidebar';
+
 export default {
+//   components: { SideBar },
   methods: {
     logout() {
         signOut()
@@ -76,6 +46,7 @@ export default {
 </script>
 
 <style>
+
 .main {
   width: 100%;
   height: 100vh;
