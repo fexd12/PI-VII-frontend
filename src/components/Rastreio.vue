@@ -154,10 +154,9 @@ ul li.theactive {
 .container1 {
   background: white;
   width: 600px;
-  height: 250px;
+  height: 300px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  padding-top: 200px;
   display: flex;
   justify-content: center;
   align-items: center;

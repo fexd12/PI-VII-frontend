@@ -227,8 +227,8 @@ export default {};
 .container {
   margin-top: 30px;
   background: white;
-  height: 200px;
-  max-width: 500px !important;
+  height: 180px;
+  width: 450px !important;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   display: flex;
@@ -242,13 +242,15 @@ label {
   display: inline-block;
   width: 160px;
   text-align: left;
-  padding: 5px;
+  padding: 1px;
   font-weight: bold;
+  font-size: 15px;
 }
 
 .input-field{
-    padding-top: 10px;
-    width: auto;
+  padding-top: 10px;
+  width: auto;
+  font-size: 15px;
 }
 
 input > label {

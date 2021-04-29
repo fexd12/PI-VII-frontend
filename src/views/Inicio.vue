@@ -1,6 +1,7 @@
 <template>
   <div>
-    <Rastreio> </Rastreio>
+    <SideMenu></SideMenu>
+    <Rastreio></Rastreio>
   </div>
 </template>
 
@@ -8,9 +9,11 @@
 import { signOut, isSignedIn } from "../auth";
 
 import Rastreio from "../components/Rastreio.vue";
+import SideMenu from "../components/SideMenu.vue";
 
 export default {
   components: {
+    SideMenu,
     Rastreio,
   },
   methods: {

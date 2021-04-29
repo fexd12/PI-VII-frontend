@@ -37,16 +37,16 @@ export default {
 <style>
 .sidebar {
   width: 250px;
-  height: 100vh;
+  height: auto;
+  min-height: 100%;
   background-color: #45deb2;
+  position: absolute;
 }
 
 .avatar span {
-  display: block;
   display: flex;
   width: 50px;
   height: 50px;
-  margin-right: 10px;
   border-radius: 50%;
   justify-content: center;
   align-items: center;
@@ -60,26 +60,26 @@ export default {
   display: flex;
 }
 .avatar {
-  margin-right: 10px;
+  margin-top: 50px;
+  margin-bottom: 10px;
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 2px 5px;
   align-items: center;
 }
 
 .buttons {
   font-size: 18px;
-  flex-direction: column;
-  display: flex;
   margin: 15px;
   padding: 20px;
   margin: 10px;
+  text-align: center
 }
 
 .buttons button {
-  margin: 25px;
-  
+  margin-top: 25px;
+  width: 120px;
+  border-radius: 8px;
 }
 
 .logout {

@@ -127,7 +127,6 @@ export default {
   padding: 35px;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -172,10 +171,5 @@ export default {
     #434546,
     #2C2D2E
   );
-}
-
-.Logo {
-  position: relative;
-  left: 5px;
 }
 </style>

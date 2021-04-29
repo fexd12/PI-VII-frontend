@@ -5,10 +5,8 @@
 </template>
 
 <script>
-// import Dashboard from "./views/Dashboard";
 export default {
   components: {
-    // Dashboard,
   },
 };
 </script>
@@ -20,7 +18,8 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   color: #2c3e50;
   background-image: linear-gradient(#686c6f, #335476);
-  height: 100%;
+  height: auto;
+  min-height: 100%;
 }
 
 #nav {

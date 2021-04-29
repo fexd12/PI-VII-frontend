@@ -3,7 +3,7 @@
     <h3 class="titulo">Fale Conosco</h3>
     <div class="container">
       <div class="dev">
-        <img src="../assets/teste_avatar2.jpeg" alt="avatar" height="60" />
+        <img src="../assets/erikao.jpeg" alt="avatar" height="60" />
         <div class="info">
           <p>Erik Jhordan - Desenvolvedor Estrutural</p>
           <p>erikjhordankz@gmail.com</p>
@@ -12,7 +12,7 @@
     </div>
     <div class="container">
       <div class="dev">
-        <img src="" alt="" />
+        <img src="../assets/amorim.jpeg" alt="avatar" height="60" />
         <div class="info">
           <p>Felipe Amorim - Desenvolvedor BackEnd</p>
           <p>felipe.demelo@hotmail.com</p>
@@ -21,7 +21,7 @@
     </div>
     <div class="container">
       <div class="dev">
-        <img src="" alt="" />
+        <img src="../assets/scandeus.jpeg" alt="avatar" height="60" />
         <div class="info">
           <p>Gabriel Torrezan - Desenvolvedor FrontEnd</p>
           <p>gabrieltorrezan@gmail.com</p>
@@ -30,7 +30,7 @@
     </div>
     <div class="container">
       <div class="dev">
-        <img src="" alt="" />
+        <img src="../assets/angelo.jpeg" alt="avatar" height="60" />
         <div class="info">
           <p>Angelo Almiento - Desenvolvedor FrontEnd</p>
           <p>angeloalmiento@gmail.com</p>
@@ -50,7 +50,7 @@ p {
   font-weight: bold;
 }
 .container{
-  max-width: 800px !important;
+  width: 600px !important;
   display: row !important;
 }
 .info{
