@@ -1,40 +1,39 @@
 import Login from '../views/Login.vue'
-import Dashboard from '../views/Dashboard.vue'
-import Rastreio from '../views/Rastreio.vue'
+import Inicio from '../views/Inicio.vue'
+import Pedidos from '../views/Pedidos.vue'
 import Scanner from '../views/Scanner.vue'
 import Contato from '../views/Contato.vue'
 
 const routes = [
-    {
-        path: '/login',
-        component: Login
-    },
-    {
-        path: '/',
-        name:'Dashboard',
-        component: Dashboard,
-        children:[
-            {
-                path:'/rastreio',
-                alias:'',
-                name:'rastreio',
-                component:Rastreio
-            },
-            {
-                path:'/scanner',
-                alias:'',
-                name:'scanner',
-                component:Scanner
-            },
-            {
-                path:'/contato',
-                alias:'',
-                name:'contato',
-                component:Contato
-            }
-        ],
-        redirect:'/login'
-    },
+  {
+    path: '/',
+    redirect:'/login'
+  },
+  {
+    path: '/login',
+    name:'login',
+    component: Login
+  },
+  {
+    path: '/inicio',
+    name:'inicio',
+    component: Inicio
+  },
+  {
+    path:'/pedidos',
+    name:'pedidos',
+    component:Pedidos
+  },
+  {
+    path:'/scanner',
+    name:'scanner',
+    component:Scanner
+  },
+  {
+    path:'/contato',
+    name:'contato',
+    component:Contato
+  }
 ]
 
 export default routes

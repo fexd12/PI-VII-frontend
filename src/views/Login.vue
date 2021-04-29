@@ -65,7 +65,7 @@ export default {
         Vue.axios.defaults.headers.common[
           "x-access-token"
         ] = localStorage.getItem("token");
-        this.$router.push("/");
+        this.$router.push("/inicio");
       } else {
         alert("Usuario ou senha Incorretos");
       }
