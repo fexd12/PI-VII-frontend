@@ -1,14 +1,14 @@
 <template>
-  <SideMenu></SideMenu>
+  <ComponentePedidos></ComponentePedidos>
 </template>
 
 <script>
 import {signOut,isSignedIn} from '../auth';
-import SideMenu from '../components/SideMenu.vue';
+import ComponentePedidos from '../components/ComponentePedidos.vue'
 
 export default {
   components: {
-    SideMenu
+    ComponentePedidos
   },
   methods: {
     logout() {

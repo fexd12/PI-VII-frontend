@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="container">
+  <div class="main">
+    <div class="container1">
       <ul class="progressbar">
         <li class="active" data-step="1">Envio</li>
         <li class="theactive" data-step="2">Enviado para Transportadora</li>
@@ -8,11 +8,43 @@
         <li data-step="4">Entregue</li>
       </ul>
     </div>
+    <div class="container2">
+      <h3 class="title">Destinatario</h3>
+      <div class="subclass">
+        <form action="">
+          <div class="input-field">
+            <label> Nome Completo:</label>
+            <input type="text" name="username" id="username" value="Nome User" disabled />
+            <div class="underline"></div>
+          </div>
+          <div class="input-field">
+            <label> Endereço: </label>
+            <input type="text" name="Endereço" id="Endereço" value="Rua 123" disabled />
+            <div class="underline"></div>
+          </div>
+          <div class="input-field">
+            <label> Complemento: </label>
+            <input type="text" name="username" id="username" value="360" disabled />
+            <div class="underline"></div>
+          </div>
+          <div class="input-field">
+            <label> Cidade: </label>
+            <input type="text" name="username" id="username" value="São Paulo" disabled />
+            <div class="underline"></div>
+            <div class="underline"></div>
+          </div>
+          <div class="input-field">
+            <label> UF: </label>
+            <input type="text" name="username" id="username" value="SP" disabled />
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  export default {};
+export default {};
 </script>
 
 <style>
@@ -22,7 +54,27 @@
   --green: #2ecc71;
   --white: #000;
 }
-
+.title {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  font-weight: bold;
+}
+.main {
+  top: 50%;
+  left: 50%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.subclass {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  
+}
 ul {
   list-style: none;
   display: flex;
@@ -92,5 +144,54 @@ ul li.theactive::after {
 
 ul li.theactive {
   color: #9fabae;
+}
+
+.n-pedido {
+  display: flex;
+  align-items: center;
+}
+
+.container1 {
+  background: white;
+  width: 600px;
+  height: 250px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding-top: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10%;
+}
+
+.container2 {
+  background: white;
+  width: 600px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  display: row;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.n-pedido {
+  align-items: center;
+  justify-content: center;
+}
+label {
+  display: inline-block;
+  width: 160px;
+  text-align: left;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.input-field {
+  padding-top: 10px;
+  width: auto;
+}
+input > label {
+  right: auto;
 }
 </style>

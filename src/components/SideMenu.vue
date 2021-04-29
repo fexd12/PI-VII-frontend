@@ -12,16 +12,25 @@
       <button @click.prevent="redirect('scanner')">Scanner</button>
       <button @click.prevent="redirect('contato')">Contato</button>
     </div>
+
+    <div class="logout">
+      <a href="" @click.prevent="logout" class="logout"
+        ><i class="fas fa-sign-out-alt"
+      /></a>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   methods: {
-    redirect(rota){
+    redirect(rota) {
       this.$router.push(rota);
-    }
-  }
+    },
+    logout() {
+      this.$router.push("/login");
+    },
+  },
 };
 </script>
 
@@ -29,7 +38,7 @@ export default {
 .sidebar {
   width: 250px;
   height: 100vh;
-  background-color: #45DEB2;
+  background-color: #45deb2;
 }
 
 .avatar span {
@@ -45,8 +54,40 @@ export default {
   color: #666;
   background-color: #ccc;
 }
+.name {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.avatar {
+  margin-right: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2px 5px;
+  align-items: center;
+}
 
 .buttons {
-  display: list-item;
+  font-size: 18px;
+  flex-direction: column;
+  display: flex;
+  margin: 15px;
+  padding: 20px;
+  margin: 10px;
+}
+
+.buttons button {
+  margin: 25px;
+  
+}
+
+.logout {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 50%;
+  font-size: 26px;
+  color: black;
 }
 </style>

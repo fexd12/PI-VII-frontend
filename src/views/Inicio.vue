@@ -1,31 +1,33 @@
 <template>
-  <SideMenu></SideMenu>
+  <div>
+    <Rastreio> </Rastreio>
+  </div>
 </template>
 
 <script>
-import {signOut,isSignedIn} from '../auth';
-import SideMenu from '../components/SideMenu.vue';
+import { signOut, isSignedIn } from "../auth";
+
+import Rastreio from "../components/Rastreio.vue";
 
 export default {
   components: {
-    SideMenu
+    Rastreio,
   },
   methods: {
     logout() {
-      signOut()
+      signOut();
       this.$router.push("/login");
     },
-    async authenticate(){
+    async authenticate() {
       let signed = await isSignedIn(this.$baseUrl);
-      if(!signed) this.$router.push('/login')
-    }
+      if (!signed) this.$router.push("/login");
+    },
   },
-  async mounted(){
-    await this.authenticate()
-  }
+  async mounted() {
+    await this.authenticate();
+  },
 };
 </script>
 
 <style>
-
 </style>
