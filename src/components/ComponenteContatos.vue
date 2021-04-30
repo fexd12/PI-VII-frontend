@@ -3,7 +3,7 @@
     <h3 class="titulo">Fale Conosco</h3>
     <div class="container">
       <div class="dev">
-        <img src="../assets/erikao.jpeg" alt="avatar" height="60" />
+        <img src="../assets/erik.jpeg" alt="avatar" height="60" />
         <div class="info">
           <p>Erik Jhordan - Desenvolvedor Estrutural</p>
           <p>erikjhordankz@gmail.com</p>
@@ -12,7 +12,7 @@
     </div>
     <div class="container">
       <div class="dev">
-        <img src="../assets/amorim.jpeg" alt="avatar" height="60" />
+        <img src="../assets/amorin.jpeg" alt="avatar" height="60" />
         <div class="info">
           <p>Felipe Amorim - Desenvolvedor BackEnd</p>
           <p>felipe.demelo@hotmail.com</p>

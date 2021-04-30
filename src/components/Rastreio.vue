@@ -1,12 +1,14 @@
 <template>
   <div class="main">
     <div class="container1">
-      <ul class="progressbar">
-        <li class="active" data-step="1">Envio</li>
-        <li class="theactive" data-step="2">Enviado para Transportadora</li>
-        <li data-step="3">Saiu para entrega</li>
-        <li data-step="4">Entregue</li>
-      </ul>
+      <div class="subclass">
+        <ul class="progressbar">
+          <li class="active" data-step="1">Envio</li>
+          <li class="theactive" data-step="2">Enviado para Transportadora</li>
+          <li data-step="3">Saiu para entrega</li>
+          <li data-step="4">Entregue</li>
+        </ul>
+      </div>
     </div>
     <div class="container2">
       <h3 class="title">Destinatario</h3>
@@ -14,28 +16,58 @@
         <form action="">
           <div class="input-field">
             <label> Nome Completo:</label>
-            <input type="text" name="username" id="username" value="Nome User" disabled />
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value="Nome User"
+              disabled
+            />
             <div class="underline"></div>
           </div>
           <div class="input-field">
             <label> Endereço: </label>
-            <input type="text" name="Endereço" id="Endereço" value="Rua 123" disabled />
+            <input
+              type="text"
+              name="Endereço"
+              id="Endereço"
+              value="Rua 123"
+              disabled
+            />
             <div class="underline"></div>
           </div>
           <div class="input-field">
             <label> Complemento: </label>
-            <input type="text" name="username" id="username" value="360" disabled />
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value="360"
+              disabled
+            />
             <div class="underline"></div>
           </div>
           <div class="input-field">
             <label> Cidade: </label>
-            <input type="text" name="username" id="username" value="São Paulo" disabled />
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value="São Paulo"
+              disabled
+            />
             <div class="underline"></div>
             <div class="underline"></div>
           </div>
           <div class="input-field">
             <label> UF: </label>
-            <input type="text" name="username" id="username" value="SP" disabled />
+            <input
+              type="text"
+              name="username"
+              id="username"
+              value="SP"
+              disabled
+            />
           </div>
         </form>
       </div>
@@ -73,7 +105,6 @@ export default {};
   justify-content: center;
   align-items: center;
   margin-top: 20px;
-  
 }
 ul {
   list-style: none;
