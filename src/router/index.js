@@ -3,6 +3,8 @@ import Inicio from '../views/Inicio.vue'
 import Pedidos from '../views/Pedidos.vue'
 import Scanner from '../views/Scanner.vue'
 import Contato from '../views/Contato.vue'
+import Gerador from '../views/GeradorQrcode.vue'
+import User from '../views/User.vue'
 
 const routes = [
   {
@@ -33,6 +35,15 @@ const routes = [
     path:'/contato',
     name:'contato',
     component:Contato
+  }, {
+      path:'/gerador',
+      name:'gerador',
+      component: Gerador
+  },
+  {
+        path: '/user',
+        name:'user',
+        component: User
   }
 ]
 

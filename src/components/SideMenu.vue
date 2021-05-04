@@ -4,17 +4,20 @@
       <span><i class="fa fa-user icon"></i></span>
     </div>
     <div class="info">
-      <p class="name">NomeUsuário</p>
+      <a href="/user">
+        <p class="name">NomeUsuário</p>
+      </a>
     </div>
     <div class="buttons">
       <button @click.prevent="redirect('inicio')">Início</button>
       <button @click.prevent="redirect('pedidos')">Pedidos</button>
       <button @click.prevent="redirect('scanner')">Scanner</button>
       <button @click.prevent="redirect('contato')">Contato</button>
+      <button @click.prevent="redirect('gerador')">Gerador</button>
     </div>
 
     <div class="logout">
-      <a href="" @click.prevent="logout" class="logout"
+      <a href="" @click.prevent="logout" class="iconsbottom"
         ><i class="fas fa-sign-out-alt"
       /></a>
     </div>
@@ -73,7 +76,7 @@ export default {
   margin: 15px;
   padding: 20px;
   margin: 10px;
-  text-align: center
+  text-align: center;
 }
 
 .buttons button {
@@ -82,7 +85,7 @@ export default {
   border-radius: 8px;
 }
 
-.logout {
+.iconsbottom {
   justify-content: center;
   align-items: center;
   display: flex;
