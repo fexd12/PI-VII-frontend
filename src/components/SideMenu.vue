@@ -12,8 +12,8 @@
       <button @click.prevent="redirect('inicio')">Início</button>
       <button @click.prevent="redirect('pedidos')">Pedidos</button>
       <button @click.prevent="redirect('scanner')">Scanner</button>
-      <button @click.prevent="redirect('contato')">Contato</button>
       <button @click.prevent="redirect('gerador')">Gerador</button>
+      <button @click.prevent="redirect('contato')">Contato</button>
     </div>
 
     <div class="logout">
@@ -25,15 +25,25 @@
 </template>
 
 <script>
+import { signOut, isSignedIn } from "../auth";
 export default {
   methods: {
     redirect(rota) {
       this.$router.push(rota);
     },
     logout() {
-      this.$router.push("/login");
+        signOut();
+        this.$router.push("/login");
+    },
+    async authenticate() {
+      let signed = await isSignedIn(this.$baseUrl);
+      if (!signed) this.$router.push("/login");
     },
   },
+  async mounted(){
+    await this.authenticate();
+
+  }
 };
 </script>
 
