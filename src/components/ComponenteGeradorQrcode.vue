@@ -2,7 +2,11 @@
   <div class="classpai">
     <div class="container">
       <div class="table">
-        <b-table :items="items" :fields="fields"> </b-table>
+        <b-table :items="items" :fields="fields"> 
+            <template #cell(qr_code)="data">
+                <img v-bind:src="'data:image/png;base64,' + data.value" />
+            </template>
+        </b-table>
       </div>
     </div>
   </div>
@@ -12,54 +16,30 @@
 export default {
   data: () => {
     return {
-      img: "",
-      id_envio: "1234",
       fields: [
-        "qrcode",
-        "usuario",
-        "produto",
-        "data_da_compra",
-        "data_do_envio",
+        "qr_code",
+        "nome",
+        "codigo_envio"
+        // "produto",
+        // "data_da_compra",
+        // "data_do_envio",
       ],
-      items: [
-        {
-          qrcode: 40,
-          usuario: "Dickerson",
-          produto: "Macdonald",
-          data_da_compra: "20/01/2002",
-          data_do_envio: "20/01/2002",
-        },
-        {
-          qrcode: 21,
-          usuario: "Larsen",
-          produto: "Shaw",
-          data_da_compra: "20/01/2002",
-          data_do_envio: "20/01/2002",
-        },
-        {
-          qrcode: 89,
-          usuario: "Geneva",
-          produto: "Wilson",
-          data_da_compra: "20/01/2002",
-          data_do_envio: "20/01/2002",
-        },
-      ],
+      items: [],
     };
   },
   methods: {
     async getQrCode() {
       try {
-        let response = await this.$http.post(`${this.$baseUrl}/envio/qrcode`, {
-          id_envio: this.id_envio,
-        });
-        let img = response.data.img[0];
-        console.log(img);
-        this.img = img;
+        let response = await this.$http.get(`${this.$baseUrl}/envio/qrcode`);
+        this.items.push(...response.data.items);
       } catch (error) {
         console.log("error:" + error);
       }
     },
   },
+  async mounted(){
+      await this.getQrCode()
+  }
 };
 </script>
 
@@ -69,12 +49,12 @@ export default {
   padding: 12px;
   display: flex;
 }
-.qr_code {
+/* .qr_code {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: auto;
-}
+} */
 
 .container {
   background: white;
