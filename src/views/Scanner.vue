@@ -7,7 +7,7 @@
 
 <script>
 import SideMenu from '../components/SideMenu.vue';
-import Qrcoded from '../components/ComponenteGeradorQrcode'
+import Qrcoded from '../components/ComponenteQrcode'
 export default {
   components: {
     SideMenu,
