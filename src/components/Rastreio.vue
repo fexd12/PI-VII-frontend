@@ -1,14 +1,12 @@
 <template>
   <div class="main">
     <div class="container1">
-      <div class="subclass">
-        <ul class="progressbar">
-          <li class="active" data-step="1">Envio</li>
-          <li class="theactive" data-step="2">Enviado para Transportadora</li>
-          <li data-step="3">Saiu para entrega</li>
-          <li data-step="4">Entregue</li>
-        </ul>
-      </div>
+      <ul>
+        <li class="active" data-step="1">Envio</li>
+        <li class="theactive" data-step="2">Enviado para Transportadora</li>
+        <li data-step="3">Saiu para entrega</li>
+        <li data-step="4">Entregue</li>
+      </ul>
     </div>
     <div class="container2">
       <h3 class="title">Destinatario</h3>
@@ -79,7 +77,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 :root {
   --dark-grey: #9fabae;
   --ligth-grey: #dfe3e4;
@@ -93,25 +91,22 @@ export default {};
   font-weight: bold;
 }
 .main {
-  top: 50%;
-  left: 50%;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   display: flex;
-  flex-direction: row;
+  padding-top: 22vh;
+  padding-left: 40vh;
+  padding-right: 20vh;
 }
 .subclass {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
 }
 ul {
   list-style: none;
-  display: flex;
-  width: 650px;
-  padding: 0;
-  margin-top: 500px;
+  display: flex;  
+  padding-top: 60px;
 }
 
 ul li {
@@ -143,8 +138,6 @@ ul li::after {
   height: 5px;
   background: var(--ligth-grey);
   position: absolute;
-  top: -35px;
-  left: -50%;
 }
 
 ul li:first-child::after {
@@ -185,13 +178,12 @@ ul li.theactive {
 .container1 {
   background: white;
   width: 600px;
-  height: 300px;
+  height: 250px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10%;
 }
 
 .container2 {

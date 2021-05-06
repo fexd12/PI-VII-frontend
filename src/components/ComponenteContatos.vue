@@ -44,14 +44,21 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 p {
   font-size: 20px;
   font-weight: bold;
 }
-.container{
-  width: 600px !important;
-  display: row !important;
+.container {
+  background: white;
+  width: 650px;
+  height: 150px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
 }
 .info{
   display: row;

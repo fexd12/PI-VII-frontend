@@ -115,6 +115,7 @@ export default {
 }
 
 .auth-content {
+  padding-top: 15vh;
   height: 100%;
   display: flex;
   justify-content: center;
