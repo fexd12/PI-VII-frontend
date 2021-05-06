@@ -12,8 +12,9 @@
       <button @click.prevent="redirect('inicio')">Início</button>
       <button @click.prevent="redirect('pedidos')">Pedidos</button>
       <button @click.prevent="redirect('scanner')">Scanner</button>
-      <button @click.prevent="redirect('gerador')">Gerador</button>
       <button @click.prevent="redirect('contato')">Contato</button>
+      <button @click.prevent="redirect('gerador')">Gerador</button>
+      <button @click.prevent="redirect('cores')">Cores</button>
     </div>
 
     <div class="logout">
