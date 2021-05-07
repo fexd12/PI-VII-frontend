@@ -1,10 +1,10 @@
 <template>
-  <div class="classpai">
+  <div class="main">
     <div class="container">
       <div class="table">
         <b-table :items="items" :fields="fields"> 
             <template #cell(qr_code)="data">
-                <img v-bind:src="'data:image/png;base64,' + data.value" />
+                <img v-bind:src="'data:image/png;base64,' + data.value" class="qrcode"/>
             </template>
         </b-table>
       </div>
@@ -44,26 +44,23 @@ export default {
 </script>
 
 <style scoped>
-.classpai {
-  margin: 0;
-  padding: 12px;
-  display: flex;
+.main {
+  padding-top: 7vh;
 }
-/* .qr_code {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: auto;
-} */
 
 .container {
   background: white;
-  width: 760px;
-  height: 650px;
+  width: 750px;
+  height: auto;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+.qrcode{
+  width: 150px;
+}
+
 </style>
