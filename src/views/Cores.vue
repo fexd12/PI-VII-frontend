@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    <SideMenu></SideMenu>
   </div>
 </template>
 

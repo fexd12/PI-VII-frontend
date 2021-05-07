@@ -1,8 +1,8 @@
 <template>
-<div>
-  <SideMenu></SideMenu>
-  <Qrcoded @decoded="onDecode"/>
-</div>
+  <div>
+    <SideMenu></SideMenu>
+    <Qrcoded @decoded="onDecode"/>
+  </div>
 </template>
 
 <script>
