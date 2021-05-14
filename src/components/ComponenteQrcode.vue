@@ -1,135 +1,147 @@
 
 <template>
-    <div class="scanner-container">
-        <div v-show="!isLoading">
-            <video poster="data:image/gif,AAAA" ref="scanner"></video>
-            <div class="overlay-element"></div>
-            <div class="laser"
-                :style="[{'background-color': laserColor}, {'box-shadow': `0 0 4px ${laserShadow}`}]"></div>
-        </div>
+  <div class="scanner-container">
+    <div v-show="!isLoading">
+      <video poster="data:image/gif,AAAA" ref="scanner"></video>
+      <div class="overlay-element"></div>
+      <div
+        class="laser"
+        :style="[
+          { 'background-color': laserColor },
+          { 'box-shadow': `0 0 4px ${laserShadow}` },
+        ]"
+      ></div>
     </div>
+  </div>
 </template>
 
 <script>
 import { BrowserMultiFormatReader, Exception } from "@zxing/library";
 export default {
-    name: "stream-barcode-reader",
-    props: {
-     laserColor: {
-       type: String,
-       default: "tomato"
-     },
-     laserShadow: {
-       type: String,
-       default: "red"
-     },
-     
+  name: "stream-barcode-reader",
+  props: {
+    laserColor: {
+      type: String,
+      default: "tomato",
     },
-    data() {
-        return {
-            isLoading: true,
-            codeReader: new BrowserMultiFormatReader(),
-            isMediaStreamAPISupported:
-                navigator &&
-                navigator.mediaDevices &&
-                "enumerateDevices" in navigator.mediaDevices
-        };
+    laserShadow: {
+      type: String,
+      default: "red",
     },
-    mounted() {
-        if (!this.isMediaStreamAPISupported) {
-            throw new Exception("Media Stream API is not supported");
-            // return;
-        }
-        this.start();
-        this.$refs.scanner.oncanplay = () => {
-            this.isLoading = false;
-            this.$emit("loaded");
-        };
-    },
-    beforeDestroy() {
-        this.codeReader.reset();
-    },
-    methods: {
-        start() {
-            this.codeReader.decodeFromVideoDevice(
-                undefined,
-                this.$refs.scanner,
-                (result, ) => {
-                    if (result) {
-                        this.$emit("decode", result.text);
-                    }
-                }
-            );
-        },
-        stopDecode() {
-          this.codeReader.stopContinuousDecode()
-        },
-        reset() {
-          this.codeReader.reset()
-        },
+  },
+  data() {
+    return {
+      isLoading: true,
+      codeReader: new BrowserMultiFormatReader(),
+      isMediaStreamAPISupported:
+        navigator &&
+        navigator.mediaDevices &&
+        "enumerateDevices" in navigator.mediaDevices,
+    };
+  },
+  mounted() {
+    if (!this.isMediaStreamAPISupported) {
+      throw new Exception("Media Stream API is not supported");
+      // return;
     }
+    this.start();
+    this.$refs.scanner.oncanplay = () => {
+      this.isLoading = false;
+      this.$emit("loaded");
+    };
+  },
+  beforeDestroy() {
+    this.codeReader.reset();
+  },
+  methods: {
+    start() {
+      this.codeReader.decodeFromVideoDevice(
+        undefined,
+        this.$refs.scanner,
+        (result) => {
+          if (result) {
+            this.$emit("decode", result.text);
+          }
+        }
+      );
+    },
+    stopDecode() {
+      this.codeReader.stopContinuousDecode();
+    },
+    reset() {
+      this.codeReader.reset();
+    },
+  },
 };
 </script>
 
 <style scoped>
 video {
-    max-width: 100%;
-    max-height: 100%;
+  width: 55%;
+  height: 55%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .scanner-container {
-    position: relative;
+  padding: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 30%;
 }
 .overlay-element {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 99%;
-    background: rgba(30, 30, 30, 0.5);
-    -webkit-clip-path: polygon(
-        0% 0%,
-        0% 100%,
-        20% 100%,
-        20% 20%,
-        80% 20%,
-        80% 80%,
-        20% 80%,
-        20% 100%,
-        100% 100%,
-        100% 0%
-    );
-    clip-path: polygon(
-        0% 0%,
-        0% 100%,
-        20% 100%,
-        20% 20%,
-        80% 20%,
-        80% 80%,
-        20% 80%,
-        20% 100%,
-        100% 100%,
-        100% 0%
-    );
+  top: 0;
+  width: 50%;
+  height: 50%;
+  background: rgba(30, 30, 30, 0.5);
+  -webkit-clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    20% 100%,
+    20% 20%,
+    80% 20%,
+    80% 80%,
+    20% 80%,
+    20% 100%,
+    100% 100%,
+    100% 0%
+  );
+  clip-path: polygon(
+    0% 0%,
+    0% 100%,
+    20% 100%,
+    20% 20%,
+    80% 20%,
+    80% 80%,
+    20% 80%,
+    20% 100%,
+    100% 100%,
+    100% 0%
+  );
 }
 .laser {
-    width: 60%;
-    margin-left: 20%;
-    height: 1px;
-    position: absolute;
-    top: 40%;
-    z-index: 2;
-    -webkit-animation: scanning 2s infinite;
-    animation: scanning 2s infinite;
+  position: absolute;
+  width: 30%;
+  margin-left: -10%;
+  height: 1px;
+  margin-top: 15%;
+  left: 50%;
+  top: 10%;
+  z-index: 1;
+  -webkit-animation: scanning 2s infinite;
+  animation: scanning 2s infinite;
 }
 @-webkit-keyframes scanning {
-    50% {
-        -webkit-transform: translateY(75px);
-        transform: translateY(75px);
-    }
+  50% {
+    -webkit-transform: translateY(75px);
+    transform: translateY(75px);
+  }
 }
 @keyframes scanning {
-    50% {
-        -webkit-transform: translateY(75px);
-        transform: translateY(75px);
-    }
+  50% {
+    -webkit-transform: translateY(75px);
+    transform: translateY(75px);
+  }
 }
 </style>
