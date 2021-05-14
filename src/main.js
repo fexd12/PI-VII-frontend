@@ -23,7 +23,7 @@ Vue.use(BootstrapVue)
 Vue.use(VueAxios,axios)
 Vue.use(Vuex)
 
-let url = "http://104.198.67.173:2000" // 34.123.16.86
+let url = "http://192.168.0.147:2000/" // 34.123.16.86
 Vue.prototype.$baseUrl = url ;
 Vue.axios.defaults.headers.common['x-access-token'] = localStorage.getItem('token');
 Vue.axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';

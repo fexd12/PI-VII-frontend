@@ -8,49 +8,44 @@
             type="text"
             name="username"
             id="username"
-            value="Nome User"
+            v-model="ativoAtual.nome"
           />
           <div class="underline"></div>
         </div>
         <div class="input-field">
           <label> Endereço: </label>
-          <input type="text" name="Endereço" id="Endereço" value="Rua 123" />
-          <div class="underline"></div>
-        </div>
-        <div class="input-field">
-          <label> Complemento: </label>
-          <input type="text" name="username" id="username" value="360" />
+          <input type="text" name="Endereço" id="endereco" v-model="ativoAtual.endereco" />
           <div class="underline"></div>
         </div>
         <div class="input-field">
           <label> Cidade: </label>
           <input
             type="text"
-            name="username"
-            id="username"
-            value="São Paulo"
+            name="cidade"
+            id="cidade"
+            v-model="ativoAtual.cidade"
           />
           <div class="underline"></div>
           <div class="underline"></div>
         </div>
         <div class="input-field">
           <label> UF: </label>
-          <input type="text" name="username" id="username" value="SP" />
+          <input type="text" name="username" id="username" v-model="ativoAtual.uf"/>
         </div>
         <div class="input-field">
           <label> Senha Atual</label>
-          <input type="password" name="password" id="passwordAatual" />
+          <input type="password" name="password" id="passwordAatual" v-model="senhas.senha" />
         </div>
         <div class="input-field">
           <label> Nova Senha </label>
-          <input type="password" name="password" id="passwordNova" />
+          <input type="password" name="password" id="passwordNova" v-model="senhas.senha_nova" />
         </div>
         <div class="input-field">
           <label> Repita Nova Senha </label>
-          <input type="password" name="password" id="passwordNovaRep" />
+          <input type="password" name="password" id="passwordNovaRep" v-model="senhas.senha_confirma" />
         </div>
         <div class="button-salvar">
-          <b-button pill variant="primary" v-b-modal.alterarUser class="button">Salvar</b-button>
+          <b-button pill variant="primary" @click="onSave" class="button">Salvar</b-button>
         </div>
       </form>
     </div>
@@ -58,7 +53,77 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data:()=>{
+        return {
+            ativoAtual:{
+                id_usuario: "",
+                nome: "",
+                endereco:"",
+                cidade:"",
+                uf:"",
+
+            },
+            senhas:{
+                senha: "",
+                senha_nova: "",
+                senha_confirma: "",
+            }
+        }
+    },
+    methods:{
+        async get_usuario(){
+            this.ativoAtual = {
+                ...this.$store.getters.get_usuario_logado
+            }
+        },
+        async onSave(){
+            let payload = {
+                ...this.ativoAtual,
+            }
+            try {
+                
+                await this.$http
+                .put(`${this.$baseUrl}/usuario/`, payload)
+                .then( async () => {
+                    alert("usuario alterada com sucesso");
+                    this.$store.dispatch('set_usuario', this.ativoAtual.nome)
+                })
+            } catch (error) {
+                alert("nao foi possivel alterar informacoes do usuario");
+
+            }
+            if(this.senhas.senha != '') await this.reset_password();
+
+        },
+        async reset_password() {
+            let payload = {
+                ...this.senhas,
+                nova_senha: 1,
+            };
+            try {
+                
+                await this.$http
+                .post(`${this.$baseUrl}/usuario/reset_password/`, payload)
+                .then( async () => {
+                    alert("senha alterada com sucesso");
+                    this.senha = "";
+                    this.senha_nova = "";
+                    this.senha_confirma = "";
+                    // await this.$http.post(`${this.$baseUrl}/email/`, {email:this.ativoAtual.email,cadastro:3})
+                });
+            } catch (error) {
+                alert("usuario e/ou senha errado");
+                this.senha = "";
+                this.senha_nova = "";
+                this.senha_confirma = "";
+            }
+        },
+    },
+    async mounted() {
+        await this.get_usuario();
+    },
+};
 </script>
 
 <style scoped>

@@ -18,7 +18,7 @@
               type="text"
               name="username"
               id="username"
-              value="Nome User"
+              v-model="ativoAtual.nome"
               disabled
             />
             <div class="underline"></div>
@@ -29,18 +29,7 @@
               type="text"
               name="Endereço"
               id="Endereço"
-              value="Rua 123"
-              disabled
-            />
-            <div class="underline"></div>
-          </div>
-          <div class="input-field">
-            <label> Complemento: </label>
-            <input
-              type="text"
-              name="username"
-              id="username"
-              value="360"
+              v-model="ativoAtual.endereco"
               disabled
             />
             <div class="underline"></div>
@@ -51,7 +40,8 @@
               type="text"
               name="username"
               id="username"
-              value="São Paulo"
+              v-model="ativoAtual.cidade"
+
               disabled
             />
             <div class="underline"></div>
@@ -63,7 +53,7 @@
               type="text"
               name="username"
               id="username"
-              value="SP"
+              v-model="ativoAtual.uf"
               disabled
             />
           </div>
@@ -74,7 +64,30 @@
 </template>
 
 <script>
-export default {};
+export default {
+    data: () =>{
+        return{
+            ativoAtual:{
+                id_usuario: "",
+                nome: "",
+                endereco:"",
+                cidade:"",
+                uf:""
+            },  
+        }
+    },
+    methods:{
+        async get_usuario(){
+            this.ativoAtual = {
+                ...this.$store.getters.get_usuario_logado
+            }
+        },
+    },
+    async mounted(){
+        await this.get_usuario();
+
+    },
+};
 </script>
 
 <style scoped>

@@ -1,30 +1,19 @@
-
 <template>
     <div class="scanner-container">
         <div v-show="!isLoading">
             <video poster="data:image/gif,AAAA" ref="scanner"></video>
             <div class="overlay-element"></div>
-            <div class="laser"
-                :style="[{'background-color': laserColor}, {'box-shadow': `0 0 4px ${laserShadow}`}]"></div>
+            <div class="laser"></div>
         </div>
     </div>
 </template>
 
 <script>
 import { BrowserMultiFormatReader, Exception } from "@zxing/library";
+
 export default {
     name: "stream-barcode-reader",
-    props: {
-     laserColor: {
-       type: String,
-       default: "tomato"
-     },
-     laserShadow: {
-       type: String,
-       default: "red"
-     },
-     
-    },
+
     data() {
         return {
             isLoading: true,
@@ -35,38 +24,36 @@ export default {
                 "enumerateDevices" in navigator.mediaDevices
         };
     },
+
     mounted() {
         if (!this.isMediaStreamAPISupported) {
             throw new Exception("Media Stream API is not supported");
             // return;
         }
+
         this.start();
         this.$refs.scanner.oncanplay = () => {
             this.isLoading = false;
             this.$emit("loaded");
         };
     },
+
     beforeDestroy() {
         this.codeReader.reset();
     },
+
     methods: {
         start() {
             this.codeReader.decodeFromVideoDevice(
                 undefined,
                 this.$refs.scanner,
-                (result, ) => {
+                (result) => {
                     if (result) {
                         this.$emit("decode", result.text);
                     }
                 }
             );
-        },
-        stopDecode() {
-          this.codeReader.stopContinuousDecode()
-        },
-        reset() {
-          this.codeReader.reset()
-        },
+        }
     }
 };
 </script>
@@ -79,12 +66,14 @@ video {
 .scanner-container {
     position: relative;
 }
+
 .overlay-element {
     position: absolute;
     top: 0;
     width: 100%;
     height: 99%;
     background: rgba(30, 30, 30, 0.5);
+
     -webkit-clip-path: polygon(
         0% 0%,
         0% 100%,
@@ -110,13 +99,16 @@ video {
         100% 0%
     );
 }
+
 .laser {
     width: 60%;
     margin-left: 20%;
+    background-color: tomato;
     height: 1px;
     position: absolute;
     top: 40%;
     z-index: 2;
+    box-shadow: 0 0 4px red;
     -webkit-animation: scanning 2s infinite;
     animation: scanning 2s infinite;
 }

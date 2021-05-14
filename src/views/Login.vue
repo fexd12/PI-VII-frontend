@@ -65,10 +65,12 @@ export default {
         Vue.axios.defaults.headers.common[
           "x-access-token"
         ] = localStorage.getItem("token");
-        this.$router.push("/inicio");
+      await this.get_usuario().then(() => this.$router.push("/inicio"))
+
       } else {
         alert("Usuario ou senha Incorretos");
       }
+
     },
     async VerifyCadastro(){
         if(this.confirmSenha === this.senha){
@@ -89,6 +91,23 @@ export default {
     changeSignup() {
       this.showSignup = this.showSignup ? false : true;
     },
+    async get_usuario(){
+        try {
+            await this.$http
+            .get(`${this.$baseUrl}/usuario/token/`)
+            .then( async (res) => {
+                this.$store.dispatch('set_usuario', res.data)
+                
+                this.ativoAtual = {
+                    ...res.data
+                }
+
+                // console.log(res.data)
+            })
+        } catch (error) {
+            alert('nao foi possivel trazer usuario')
+        }
+},
   },
   async mounted() {
     await this.authenticate();

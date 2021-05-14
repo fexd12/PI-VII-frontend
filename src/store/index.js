@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import {request} from '../services';
+// import {request} from '../services';
 import Vuex from 'vuex';
 import createPersistedState from "vuex-persistedstate"; 
 
@@ -22,7 +22,7 @@ const store = new Vuex.Store({
     },
     actions:{
         get_usuario({commit},payload){
-            request.get(payload).then(res=>{
+            this.$http.get(payload).then(res=>{
                 commit('setUsuario',res.data)
             })
         },

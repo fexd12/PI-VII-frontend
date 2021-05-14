@@ -5,16 +5,16 @@
     </div>
     <div class="info">
       <a href="/user">
-        <p class="name">NomeUsuário</p>
+        <p class="name">{{ativoAtual.nome}}</p>
       </a>
     </div>
     <div class="buttons">
       <button @click.prevent="redirect('inicio')">Início</button>
       <button @click.prevent="redirect('pedidos')">Pedidos</button>
       <button @click.prevent="redirect('scanner')">Scanner</button>
-      <button @click.prevent="redirect('contato')">Contato</button>
       <button @click.prevent="redirect('gerador')">Gerador</button>
       <button @click.prevent="redirect('cores')">Cores</button>
+      <button @click.prevent="redirect('contato')">Contato</button>
     </div>
 
     <div class="logout">
@@ -28,23 +28,36 @@
 <script>
 import { signOut, isSignedIn } from "../auth";
 export default {
+  data: () => {
+    return {
+      ativoAtual:{
+        nome:""
+      }
+    };
+  },
   methods: {
+    async get_usuario() {
+      this.ativoAtual = {
+        ...this.$store.getters.get_usuario_logado
+      }
+      console.log(this.ativoAtual)
+    },
     redirect(rota) {
       this.$router.push(rota);
     },
     logout() {
-        signOut();
-        this.$router.push("/login");
+      signOut();
+      this.$router.push("/login");
     },
     async authenticate() {
       let signed = await isSignedIn(this.$baseUrl);
       if (!signed) this.$router.push("/login");
     },
   },
-  async mounted(){
+  async mounted() {
     await this.authenticate();
-
-  }
+    await this.get_usuario()
+  },
 };
 </script>
 

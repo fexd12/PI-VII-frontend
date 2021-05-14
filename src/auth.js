@@ -13,7 +13,7 @@ export async function signIn(url, email, senha) {
     if (Object.keys(token.data).includes("token") && token.data.success) {
         localStorage.setItem("token", token.data.token);
         localStorage.setItem("user", token.data.user);
-        store.dispatch('get_usuario', `${url}/usuario/token/`);
+        store.dispatch('set_usuario',{nome: token.data.user});
         return token.data;
     } else {
         return token.data;
