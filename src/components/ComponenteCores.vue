@@ -1,58 +1,38 @@
 <template>
   <div class="container_cores">
     <div class="container">
-      <b-form-checkbox-group
-        v-model="valueCor"
-        :options="optionsCor"
-        :state="stateCor"
-        switches
-      >
-        <b-form-invalid-feedback :state="stateCor"
-          >Selecione Somente UMA cor</b-form-invalid-feedback
+      <div>
+        <b-dropdown
+          id="dropdown-left"
+          text="Selecione a Cor"
+          variant="primary"
+          class="m-2"
         >
-      </b-form-checkbox-group>
+          <b-dropdown-item>Green</b-dropdown-item>
+          <b-dropdown-item>Blue</b-dropdown-item>
+          <b-dropdown-item>Yellow</b-dropdown-item>
+          <b-dropdown-item>Red</b-dropdown-item>
+        </b-dropdown>
 
-      <b-form-checkbox-group
-        v-model="valueLado"
-        :options="optionsLado"
-        :state="stateLado"
-        switches
-      >
-        <b-form-invalid-feedback :state="stateLado"
-          >Selecione somente UM lado
-        </b-form-invalid-feedback>
-      </b-form-checkbox-group>
+        <b-dropdown
+          id="dropdown-right"
+          right
+          text="Selecione uma direção"
+          variant="primary"
+          class="m-2"
+        >
+          <b-dropdown-item>Esquerda</b-dropdown-item>
+          <b-dropdown-item>Direita</b-dropdown-item>
+          <b-dropdown-item>Frente</b-dropdown-item>
+        </b-dropdown>
+      </div>
+      <b-button variant="success" class="button1" >Alterar Cor e direção</b-button>
     </div>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      value: [],
-      optionsCor: [
-        { text: "Blue", value: "blue" },
-        { text: "Yellow", value: "yellow" },
-        { text: "Green", value: "green" },
-        { text: "Red", value: "red" },
-      ],
-      optionsLado: [
-        { text: "Esquerda", value: "esquerda" },
-        { text: "Direita", value: "direita" },
-        { text: "Frente", value: "frente" },
-      ],
-    };
-  },
-  computed: {
-    stateCor() {
-      return this.value.length === 1;
-    },
-    stateLado() {
-        return this.value.length === 1
-    },
-  },
-};
+export default {};
 </script>
 
 <style>
@@ -70,5 +50,8 @@ export default {
 .container_cores {
   padding-top: 15%;
   padding-left: 15%;
+}
+.button1{
+    padding: 10px;
 }
 </style>
