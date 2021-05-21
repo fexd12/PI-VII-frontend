@@ -143,6 +143,7 @@ export default {
 @media (max-width: 450px) {
   .auth-content {
     padding-top: 10%;
+    padding-bottom: 10%;
   }
 }
 
