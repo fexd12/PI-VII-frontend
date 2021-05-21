@@ -1,6 +1,7 @@
 <template>
 <div>
-  <SideMenu></SideMenu>
+  <SideMenu class="sidemenu"></SideMenu>
+  <SideMenuMobile class="sidemenumobile"></SideMenuMobile>
   <ComponenteContatos></ComponenteContatos>
 </div>
 </template>
@@ -9,12 +10,15 @@
 import {signOut,isSignedIn} from '../auth';
 import ComponenteContatos from '../components/ComponenteContatos.vue'
 import SideMenu from '../components/SideMenu.vue'
+import SideMenuMobile from "../components/SideMenuMobile.vue";
 
 export default {
   components: {
     SideMenu,
+    SideMenuMobile,
     ComponenteContatos,
   },
+
   methods: {
     logout() {
       signOut()
@@ -31,6 +35,16 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+@media (max-width: 450px) {
+  .sidemenu {
+    display: none;
+  }
+}
 
+@media (min-width: 450px) {
+  .sidemenumobile {
+    display: none;
+  }
+}
 </style>
