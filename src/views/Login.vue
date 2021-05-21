@@ -28,9 +28,9 @@
         <button v-else @click.prevent="onSubmit">Entrar</button>
 
         <hr class="espacamento-top">
-        <a href @click.prevent="showSignup = !showSignup">
+        <a href @click.prevent="showSignup = !showSignup" class="cadastre-se">
           <span v-if="showSignup"> Já tem cadastro? Faça o Login!</span>
-          <span v-else class="cadastre-se">Não tem cadastro? Cadastra-se já </span>
+          <span v-else>Não tem cadastro? Cadastra-se já </span>
         </a>
       </form>
     </div>
