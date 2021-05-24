@@ -36,11 +36,12 @@ export default {
       isMediaStreamAPISupported:
         navigator &&
         navigator.mediaDevices &&
-        "enumerateDevices" in navigator.mediaDevices,
+        "enumerateDevices" in navigator.mediaDevices
     };
   },
   mounted() {
     if (!this.isMediaStreamAPISupported) {
+        // alert('ativar a camera para acessar o scanner')
       throw new Exception("Media Stream API is not supported");
       // return;
     }

@@ -40,7 +40,7 @@ export default {
       this.ativoAtual = {
         ...this.$store.getters.get_usuario_logado
       }
-      console.log(this.ativoAtual)
+    //   console.log(this.ativoAtual)
     },
     redirect(rota) {
       this.$router.push(rota);

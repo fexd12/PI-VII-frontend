@@ -1,6 +1,11 @@
 <template>
   <div class="main">
     <div class="container1">
+      <div class="title">
+        <span>Codigo do Pedido:</span>
+        <h5>{{pedido.codigo_pedido}}</h5>
+      </div >
+
       <ul>
         <li class="active" data-step="1">Envio</li>
         <li class="theactive" data-step="2">Enviado para Transportadora</li>
@@ -73,7 +78,11 @@ export default {
                 endereco:"",
                 cidade:"",
                 uf:""
-            },  
+            },
+            pedido:{
+                codigo_pedido:"",
+                status:""
+            }
         }
     },
     methods:{
@@ -82,6 +91,9 @@ export default {
                 ...this.$store.getters.get_usuario_logado
             }
         },
+        async get_pedido(){
+
+        }
     },
     async mounted(){
         await this.get_usuario();
@@ -103,6 +115,7 @@ export default {
   display: flex;
   font-weight: bold;
 }
+
 .main {
   justify-content: space-between;
   align-items: center;
@@ -194,9 +207,11 @@ ul li.theactive {
   height: 250px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-  display: flex;
+  display: row;
   justify-content: center;
   align-items: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .container2 {

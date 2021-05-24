@@ -1,7 +1,7 @@
 <template>
   <div>
     <SideMenu></SideMenu>
-    <Qrcoded @decoded="onDecode"/>
+    <Qrcoded @decode="(a,b,c) => onDecode(a,b,c)" @loaded="() => onLoaded()"/>
   </div>
 </template>
 
@@ -19,8 +19,11 @@ export default {
     }
   },
   methods: {
-    onDecode(decoded){
-        console.log(decoded)
+    onDecode(a,b,c){
+        console.log(a,b,c)
+    },
+    onLoaded(){
+        console.log('loaded')
     }
   },
   async mounted(){

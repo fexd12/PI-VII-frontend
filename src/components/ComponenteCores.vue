@@ -2,37 +2,69 @@
   <div class="container_cores">
     <div class="container">
       <div>
-        <b-dropdown
+        <b-form-select
           id="dropdown-left"
           text="Selecione a Cor"
           variant="primary"
           class="m-2"
-        >
-          <b-dropdown-item>Green</b-dropdown-item>
-          <b-dropdown-item>Blue</b-dropdown-item>
-          <b-dropdown-item>Yellow</b-dropdown-item>
-          <b-dropdown-item>Red</b-dropdown-item>
-        </b-dropdown>
+           v-model="selected.color"
+           :options="optionsColor"
+        ></b-form-select>
 
-        <b-dropdown
+        <b-form-select
           id="dropdown-right"
-          right
-          text="Selecione uma direção"
+          text="Selecione a Direcao"
           variant="primary"
           class="m-2"
-        >
-          <b-dropdown-item>Esquerda</b-dropdown-item>
-          <b-dropdown-item>Direita</b-dropdown-item>
-          <b-dropdown-item>Frente</b-dropdown-item>
-        </b-dropdown>
+           v-model="selected.direcao"
+           :options="optionsDirecao"
+        ></b-form-select>
+
       </div>
-      <b-button variant="success" class="button1" >Alterar Cor e direção</b-button>
+      <b-button variant="success" class="button1" :v-on="submitColor" >Alterar Cor e direção</b-button>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+    data() {
+        return {
+            selected:{
+                color:null,
+                direcao:null
+            },
+            optionsColor:[  { value: null, text: 'Please select an option' },
+                            { value: 1, text: 'Azul' },
+                            { value: 2, text: 'Vermelho' },
+                            { value: 3, text: 'Amarelo' },
+                            { value: 4, text: 'Verde' }
+            ],
+            optionsDirecao:[    { value: null, text: 'Please select an option' },
+                                { value: 1, text: 'Esquerda' },
+                                { value: 2, text: 'Direita' },
+                                { value: 3, text: 'Frente' }
+
+            ]
+        }
+    },
+    methods:{
+        async submitColor(){
+            try {
+                if (this.selected.color && this.selected.direcao){
+                    let payload = {...this.selected};
+                    
+                    await this.$http
+                        .post(`${this.$baseUrl}/direcao/`, payload);
+
+                }
+            } catch (error) {
+                console.log(error);
+                
+            }
+        }
+    }
+};
 </script>
 
 <style>

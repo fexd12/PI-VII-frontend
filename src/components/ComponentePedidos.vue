@@ -20,7 +20,7 @@
               type="text"
               name="data"
               id="data"
-              :value="item.data"
+              :value="format_date(item.data)"
               disabled
             />
             <div class="underline"></div>
@@ -69,6 +69,22 @@ export default {
         alert("nao foi possivel trazer usuario");
       }
     },
+    format_date(date){
+        let DateFormat;
+
+        if(date != null){
+            let miliseconds = Number(date)
+            
+            let DateFromMili = new Date(miliseconds)
+    
+            DateFormat = DateFromMili.toLocaleDateString()
+                
+        }else{
+            DateFormat = 'Não foi inserido data'
+        }
+
+        return DateFormat
+    }
   },
   async mounted() {
     await this.get_pedidos();

@@ -18,8 +18,8 @@ export default {
     return {
       fields: [
         "qr_code",
-        "nome",
-        "codigo_envio"
+        "codigo_envio",
+        "codigo_pedido"
         // "produto",
         // "data_da_compra",
         // "data_do_envio",
