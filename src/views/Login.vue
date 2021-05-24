@@ -28,7 +28,7 @@
         <button v-else @click.prevent="onSubmit">Entrar</button>
 
         <hr class="espacamento-top">
-        <a href @click.prevent="showSignup = !showSignup">
+        <a href @click.prevent="showSignup = !showSignup" class="cadastre-se">
           <span v-if="showSignup"> Já tem cadastro? Faça o Login!</span>
           <span v-else>Não tem cadastro? Cadastra-se já </span>
         </a>
@@ -140,6 +140,12 @@ export default {
   justify-content: center;
   align-items: center;
 }
+@media (max-width: 450px) {
+  .auth-content {
+    padding-top: 10%;
+    padding-bottom: 10%;
+  }
+}
 
 .auth-modal {
   background-color: #fff;
@@ -148,6 +154,12 @@ export default {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
+}
+@media (max-width: 450px) {
+  .auth-modal {
+    width: 80%;
+    height: 80%;
+  }
 }
 
 .auth-title {
@@ -166,6 +178,17 @@ export default {
   padding: 3px 8px;
   outline: none;
   background-color: #A0A4A5;
+}
+@media (max-width: 450px) {
+  .auth-modal input {
+    width: 90%;
+  }
+}
+
+@media (max-width: 450px) {
+  .cadastre-se {
+    font-size: 14px;
+  }
 }
 
 .auth-modal button {
