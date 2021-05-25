@@ -3,15 +3,16 @@
     <div class="container1">
       <div class="title">
         <span>Codigo do Pedido:</span>
-        <h5>{{pedido.cod_pedido}}</h5>
-      </div >
+        <h5>{{ pedido.cod_pedido }}</h5>
+      </div>
 
       <ul>
         <li class="active" data-step="1">Envio</li>
-        <li class="theactive" data-step="2">Enviado para Transportadora</li>
-        <li data-step="3">Saiu para entrega</li>
-        <li data-step="4">Entregue</li>
+        <li class="active" data-step="2">Enviado para Transportadora</li>
+        <li class="active" data-step="3">Saiu para entrega</li>
+        <li class="active" data-step="4">Entregue</li>
       </ul>
+
     </div>
     <div class="container2">
       <h3 class="title">Destinatario</h3>
@@ -46,7 +47,6 @@
               name="username"
               id="username"
               v-model="ativoAtual.cidade"
-
               disabled
             />
             <div class="underline"></div>
@@ -70,46 +70,59 @@
 
 <script>
 export default {
-    data: () =>{
-        return{
-            ativoAtual:{
-                id_usuario: "",
-                nome: "",
-                endereco:"",
-                cidade:"",
-                uf:""
-            },
-            pedido:{
-                cod_pedido:"",
-                status:""
-            }
-        }
+  data: () => {
+    return {
+      ativoAtual: {
+        id_usuario: "",
+        nome: "",
+        endereco: "",
+        cidade: "",
+        uf: "",
+      },
+      pedido: {
+        cod_pedido: "",
+        status: "",
+      },
+    };
+  },
+  methods: {
+    async get_usuario() {
+      this.ativoAtual = {
+        ...this.$store.getters.get_usuario_logado,
+      };
     },
-    methods:{
-        async get_usuario(){
-            this.ativoAtual = {
-                ...this.$store.getters.get_usuario_logado
-            }
-        },
-        async get_pedido(){
-            try {
+    att_satus(){
+        const next = document.getElementById("next")
+        next.addEventListener('click')
 
-                let response = await this.$http.get(`${this.$baseUrl}/pedidos/last`);
+        let activeStep = 1
+        let maxStep = 4
+    
+        activeStep = activeStep + 1
+        document.querySelector('data-step="${activeStep}"').classList.add('active')
 
-                this.pedido = {...response.data}
+        next.disabled = false
+        if(activeStep === maxStep){
+            next.disabled = true
+        } 
 
-                console.log(this.items)
-
-            
-            } catch (error) {
-                console.log(error);
-            }
-        }
     },
-    async mounted(){
-        await this.get_usuario();
-        await this.get_pedido();
+    async get_pedido() {
+      try {
+        let response = await this.$http.get(`${this.$baseUrl}/pedidos/last`);
+
+        this.pedido = { ...response.data };
+
+        console.log(this.items);
+      } catch (error) {
+        console.log(error);
+      }
     },
+  },
+  async mounted() {
+    await this.get_usuario();
+    await this.get_pedido();
+  },
 };
 </script>
 
@@ -142,7 +155,7 @@ export default {
 }
 ul {
   list-style: none;
-  display: flex;  
+  display: flex;
   padding-top: 60px;
 }
 
@@ -175,6 +188,8 @@ ul li::after {
   height: 5px;
   background: var(--ligth-grey);
   position: absolute;
+  top: -30px;
+  left: -50%;
 }
 
 ul li:first-child::after {
