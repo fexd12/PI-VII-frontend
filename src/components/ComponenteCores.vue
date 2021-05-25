@@ -32,7 +32,20 @@
         <div class="title2">
           <h3>Alteração das cores</h3>
         </div>
-        <b-table :items="items" :fields="fields"> </b-table>
+        <b-table
+          class="table table-bordered dataTable"
+          responsive
+          hover
+          head-variant="light"
+          :items="items"
+          :fields="fields"
+        >
+          <template slot="cell(actionDelete)" slot-scope="{ item }">
+            <b-button class="btn btn-danger" v-on:click="deleteColor(item)">
+              <i class="fa fa-trash"></i>
+            </b-button>
+          </template>
+        </b-table>
       </div>
     </div>
   </div>
@@ -59,50 +72,60 @@ export default {
         { value: 2, text: "Direita" },
         { value: 3, text: "Frente" },
       ],
-      fields: ["cor","direcao" ],
+      fields: [
+        {
+          key:"cor",
+          label: "Cor"
+        },
+        {
+            key: "direcao",
+            label: "Posição"
+        },
+        {
+            key: "actionDelete",
+            label:"Excluir"
+        }
+      ],
       items: [],
     };
   },
   methods: {
     async submitColor() {
       try {
-          
         if (this.selected.cor_id != null && this.selected.direcao_id != null) {
-            console.log(this.selected);
+          console.log(this.selected);
           let payload = { ...this.selected };
 
-          await this.$http.post(`${this.$baseUrl}/direcao/`, payload).then(async()=>{
-            await this.getColor()
+          await this.$http
+            .post(`${this.$baseUrl}/direcao/`, payload)
+            .then(async () => {
+              await this.getColor();
             });
         }
       } catch (error) {
         console.log(error);
       }
     },
-    async getColor(){
-        try {
+    async getColor() {
+      try {
+        let response = await this.$http.get(`${this.$baseUrl}/direcao/`);
 
-            let response = await this.$http.get(`${this.$baseUrl}/direcao/`);
-
-            this.items = response.data.items
-        
-        } catch (error) {
-            console.log(error);
-        }
+        this.items = response.data.items;
+      } catch (error) {
+        console.log(error);
+      }
     },
-    async deleteColor(ativo){
-        try {
-
-            await this.$http.delete(`${this.$baseUrl}/direcao/`,ativo);
-        
-        } catch (error) {
-            console.log(error);
-        }
-    }
+    async deleteColor(ativo) {
+      try {
+        await this.$http.delete(`${this.$baseUrl}/direcao/`, ativo);
+      } catch (error) {
+        console.log(error);
+      }
+    },
   },
-  async mounted(){
-      await this.getColor()
-  }
+  async mounted() {
+    await this.getColor();
+  },
 };
 </script>
 
