@@ -10,7 +10,7 @@
           text="Selecione a Cor"
           variant="primary"
           class="m-2"
-          v-model="selected.color"
+          v-model="selected.cor_id"
           :options="optionsColor"
         ></b-form-select>
 
@@ -19,11 +19,11 @@
           text="Selecione a Direcao"
           variant="primary"
           class="m-2"
-          v-model="selected.direcao"
+          v-model="selected.direcao_id"
           :options="optionsDirecao"
         ></b-form-select>
       </div>
-      <b-button variant="success" class="button1" :v-on="submitColor">
+      <b-button variant="success" class="button1" @click="submitColor">
         Alterar cor e direção
       </b-button>
     </div>
@@ -43,8 +43,8 @@ export default {
   data() {
     return {
       selected: {
-        color: null,
-        direcao: null,
+        cor_id: null,
+        direcao_id: null,
       },
       optionsColor: [
         { value: null, text: "Por favor, selecione uma cor" },
@@ -59,27 +59,50 @@ export default {
         { value: 2, text: "Direita" },
         { value: 3, text: "Frente" },
       ],
-      fields: ["ID", "Posição", "Cor"],
-      items: [
-        { ID: "#01", Posição: "Esquerda", Cor: "Amarelo" },
-        { ID: "#02", Posição: "Direta", Cor: "Verde" },
-        { ID: "#03", Posição: "Frente", Cor: "Vermelho" },
-      ],
+      fields: ["cor","direcao" ],
+      items: [],
     };
   },
   methods: {
     async submitColor() {
       try {
-        if (this.selected.color && this.selected.direcao) {
+          
+        if (this.selected.cor_id != null && this.selected.direcao_id != null) {
+            console.log(this.selected);
           let payload = { ...this.selected };
 
-          await this.$http.post(`${this.$baseUrl}/direcao/`, payload);
+          await this.$http.post(`${this.$baseUrl}/direcao/`, payload).then(async()=>{
+            await this.getColor()
+            });
         }
       } catch (error) {
         console.log(error);
       }
     },
+    async getColor(){
+        try {
+
+            let response = await this.$http.get(`${this.$baseUrl}/direcao/`);
+
+            this.items = response.data.items
+        
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    async deleteColor(ativo){
+        try {
+
+            await this.$http.delete(`${this.$baseUrl}/direcao/`,ativo);
+        
+        } catch (error) {
+            console.log(error);
+        }
+    }
   },
+  async mounted(){
+      await this.getColor()
+  }
 };
 </script>
 

@@ -3,7 +3,7 @@
     <div class="container1">
       <div class="title">
         <span>Codigo do Pedido:</span>
-        <h5>{{pedido.codigo_pedido}}</h5>
+        <h5>{{pedido.cod_pedido}}</h5>
       </div >
 
       <ul>
@@ -80,7 +80,7 @@ export default {
                 uf:""
             },
             pedido:{
-                codigo_pedido:"",
+                cod_pedido:"",
                 status:""
             }
         }
@@ -92,12 +92,23 @@ export default {
             }
         },
         async get_pedido(){
+            try {
 
+                let response = await this.$http.get(`${this.$baseUrl}/pedidos/last`);
+
+                this.pedido = {...response.data}
+
+                console.log(this.items)
+
+            
+            } catch (error) {
+                console.log(error);
+            }
         }
     },
     async mounted(){
         await this.get_usuario();
-
+        await this.get_pedido();
     },
 };
 </script>
