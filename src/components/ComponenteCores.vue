@@ -116,8 +116,9 @@ export default {
       }
     },
     async deleteColor(ativo) {
+        console.log(ativo)
       try {
-        await this.$http.delete(`${this.$baseUrl}/direcao/`, ativo);
+        await this.$http.post(`${this.$baseUrl}/direcao/deletar`, ativo).then(async()=>await this.getColor());
       } catch (error) {
         console.log(error);
       }
