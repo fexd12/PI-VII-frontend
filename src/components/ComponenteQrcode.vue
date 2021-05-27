@@ -14,11 +14,11 @@
         ></div>
       </div>
     </div>
-  </div>
+  </div>  
 </template>
 
 <script>
-import { BrowserMultiFormatReader, Exception } from "@zxing/library";
+import { BrowserMultiFormatReader } from "@zxing/library";
 
 export default {
   name: "stream-barcode-reader",
@@ -43,12 +43,13 @@ export default {
     };
   },
   mounted() {
-    if (!this.isMediaStreamAPISupported) {
-        // alert('ativar a camera para acessar o scanner')
-      throw new Exception("Media Stream API is not supported");
-      // return;
-    }
-    this.start();
+    // if (!this.isMediaStreamAPISupported) {
+    //     // alert('ativar a camera para acessar o scanner')
+    //   throw new Exception("Media Stream API is not supported");
+    //   // return;
+    // }
+    //this.start();
+    this.mountButton()
     this.$refs.scanner.oncanplay = () => {
       this.isLoading = false;
       this.$emit("loaded");
@@ -68,6 +69,25 @@ export default {
           }
         }
       );
+    },
+    mountButton(){
+        navigator.mediaDevices.getUserMedia({
+            video: {
+            facingMode: "environment"
+            }
+        }).then(()=> {
+            // scanning = true;
+            // qrResult.hidden = true;
+            // btnScanQR.hidden = true;
+            // canvasElement.hidden = false;
+            //video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+
+            // video.srcObject = stream;
+            // video.play();
+            // tick();
+            this.start()
+            // scan();
+        });
     },
     stopDecode() {
       this.codeReader.stopContinuousDecode();
