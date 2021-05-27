@@ -143,15 +143,28 @@ export default {
   margin-top: 35px;
 }
 @media (max-width: 450px) {
-  .sidemenu {
-    display: none;
+  .container {
+    width: 100%;
+    height: auto;
+    margin-top: 20%;
+    margin-top: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 }
 
 .container_cores {
-  padding-top: 5%;
+  padding-top: 35px;
   padding-left: 15%;
   margin-left: 15px;
+}
+@media (max-width: 450px) {
+  .container_cores {
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-left: 0px;
+    padding-top: 20%;
+  }
 }
 
 .cores_alternar {
@@ -202,5 +215,16 @@ input > label {
   padding: 10%;
   margin-left: 15%;
   margin-top: 1px;
+}
+
+@media (max-width: 450px) {
+  h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .table {
+    margin-bottom: 0px;
+  }
 }
 </style>

@@ -58,7 +58,7 @@ import { signOut, isSignedIn } from "../auth";
 export default {
   data: () => {
     return {
-      usurario: {},
+      usuario: {},
       ativoAtual: {
         nome: "",
       },
