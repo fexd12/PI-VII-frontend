@@ -1,15 +1,18 @@
 <template>
-  <div class="scanner-container">
-    <div v-show="!isLoading">
-      <video poster="data:image/gif,AAAA" ref="scanner"></video>
-      <div class="overlay-element"></div>
-      <div
-        class="laser"
-        :style="[
-          { 'background-color': laserColor },
-          { 'box-shadow': `0 0 4px ${laserShadow}` },
-        ]"
-      ></div>
+  <div>
+    <h3 class="titulo">Scanner</h3>
+    <div class="scanner-container">
+      <div v-show="!isLoading">
+        <video poster="data:image/gif,AAAA" ref="scanner"></video>
+        <div class="overlay-element"></div>
+        <div
+          class="laser"
+          :style="[
+            { 'background-color': laserColor },
+            { 'box-shadow': `0 0 4px ${laserShadow}` },
+          ]"
+        ></div>
+      </div>
     </div>
   </div>
 </template>
@@ -100,11 +103,12 @@ video {
   align-items: center;
   justify-content: center;
   margin-left: 20%;
+  padding-top: 5%;
 }
 @media (max-width: 450px) {
   .scanner-container {
     padding: unset;
-    padding-top: 50%;
+    padding-top: 25%;
     padding-left: 10%;
     padding-right: 10%;
     display: flex;
@@ -181,6 +185,21 @@ video {
   50% {
     -webkit-transform: translateY(75px);
     transform: translateY(75px);
+  }
+}
+
+h3 {
+  padding-top: 5%;
+  padding-left: 50%;
+  color: white;
+  font-weight: bold;
+}
+@media (max-width: 450px) {
+  h3 {
+    padding-top: 20%;
+    padding-left: 35%;
+    color: white;
+    font-weight: bold;
   }
 }
 </style>

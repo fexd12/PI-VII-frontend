@@ -3,7 +3,7 @@
     <div class="container1">
       <div class="title">
         <span>Codigo do Pedido:</span>
-        <h5>{{ pedido.cod_pedido }}</h5>
+        <h5 class="numero-pedido">{{ pedido.cod_pedido }}</h5>
       </div>
 
       <ul>
@@ -187,6 +187,12 @@ ul li {
   width: 150px;
   text-align: center;
 }
+@media (max-width: 450px) {
+  ul li {
+    font-size: 12px;
+    margin-left: -12px;
+  }
+}
 
 ul li::before {
   display: flex;
@@ -369,5 +375,12 @@ label {
 
 input > label {
   right: auto;
+}
+
+.numero-pedido{
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 10px;
+  padding-top: 8px;
 }
 </style>
