@@ -77,7 +77,7 @@ export default {
 }
 @media (max-width: 450px) {
   .qrcode{
-    width: 20%;
+    width: 85%;
   }
 }
 

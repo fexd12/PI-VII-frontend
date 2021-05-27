@@ -98,7 +98,7 @@ export default {
 
 <style scoped>
 video {
-  width: 55%;
+  width: 80%;
   height: 55%;
   display: flex;
   align-items: center;
@@ -119,7 +119,7 @@ video {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 30%;
+  margin-left: 20%;
 }
 @media (max-width: 450px) {
   .scanner-container {
@@ -167,12 +167,12 @@ video {
 
 .laser {
   position: absolute;
-  width: 30%;
+  width: 20%;
   margin-left: -10%;
   height: 1px;
   margin-top: 15%;
-  left: 50%;
-  top: 10%;
+  left: 57%;
+  top: 5%;
   z-index: 1;
   -webkit-animation: scanning 2s infinite;
   animation: scanning 2s infinite;

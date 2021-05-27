@@ -5,16 +5,43 @@
     </div>
     <div class="info">
       <a href="/user">
-        <p class="name">{{ativoAtual.nome}}</p>
+        <p class="name">{{ ativoAtual.nome }}</p>
       </a>
     </div>
     <div class="buttons">
-      <button @click.prevent="redirect('inicio')">Início</button>
-      <button @click.prevent="redirect('pedidos')">Pedidos</button>
-      <button @click.prevent="redirect('scanner')">Scanner</button>
-      <button @click.prevent="redirect('gerador')">Gerador</button>
-      <button @click.prevent="redirect('cores')">Cores</button>
-      <button @click.prevent="redirect('contato')">Contato</button>
+      <button
+        @click.prevent="redirect('inicio')"
+        v-if="usuario.id_funcao === 1"
+      >
+        Início
+      </button>
+      <button
+        @click.prevent="redirect('pedidos')"
+        v-if="usuario.id_funcao === 1"
+      >
+        Pedidos
+      </button>
+      <button
+        @click.prevent="redirect('scanner')"
+        v-if="usuario.id_funcao === 1 || usuario.id_funcao === 2"
+      >
+        Scanner
+      </button>
+      <button
+        @click.prevent="redirect('gerador')"
+        v-if="usuario.id_funcao === 2"
+      >
+        Gerador
+      </button>
+      <button @click.prevent="redirect('cores')" v-if="usuario.id_funcao === 2">
+        Cores
+      </button>
+      <button
+        @click.prevent="redirect('contato')"
+        v-if="usuario.id_funcao === 1"
+      >
+        Contato
+      </button>
     </div>
 
     <div class="logout">
@@ -31,17 +58,18 @@ import { signOut, isSignedIn } from "../auth";
 export default {
   data: () => {
     return {
-      ativoAtual:{
-        nome:""
-      }
+      usurario: {},
+      ativoAtual: {
+        nome: "",
+      },
     };
   },
   methods: {
     async get_usuario() {
       this.ativoAtual = {
-        ...this.$store.getters.get_usuario_logado
-      }
-    //   console.log(this.ativoAtual)
+        ...this.$store.getters.get_usuario_logado,
+      };
+      //   console.log(this.ativoAtual)
     },
     redirect(rota) {
       this.$router.push(rota);
@@ -57,7 +85,7 @@ export default {
   },
   async mounted() {
     await this.authenticate();
-    await this.get_usuario()
+    await this.get_usuario();
   },
 };
 </script>
