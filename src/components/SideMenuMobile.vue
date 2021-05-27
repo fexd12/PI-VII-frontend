@@ -14,6 +14,12 @@
     <span @click.prevent="redirect('gerador')">Gerador</span>
     <span @click.prevent="redirect('cores')">Cores</span>
     <span @click.prevent="redirect('contato')">Contato</span>
+
+    <div class="logout">
+      <a href="" @click.prevent="logout" class="iconsbottom"
+        ><i class="fas fa-sign-out-alt"
+      /></a>
+    </div>
   </Slide>
 </template>
 
@@ -59,6 +65,13 @@ export default {
 </script>
 
 <style>
+  @media (max-width: 450px) {
+    .logout {
+      margin-top: -80px;
+      margin-left: -40px;
+    }
+  }
+
   .bm-burger-button {
     position: fixed;
     width: 36px;
