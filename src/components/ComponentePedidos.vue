@@ -95,6 +95,9 @@ export default {
 <style scoped>
 .container_full {
   flex-direction: row;
+  margin-left: 5%;
+  margin-right: 5%;
+  padding-bottom: 10%;
 }
 
 .titulo {
@@ -104,6 +107,11 @@ export default {
   padding-top: 25px;
   color: #fff;
   font-weight: bold;
+}
+@media (max-width: 450px) {
+  .titulo {
+    padding-top: 20%;
+  }
 }
 
 .container {
@@ -118,6 +126,18 @@ export default {
   align-items: center;
   padding-top: 30px;
   padding-bottom: 30px;
+}
+@media (max-width: 450px) {
+  .container {
+    width: 100% !important;
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  input {
+    width: 45%;
+  }
 }
 
 label {

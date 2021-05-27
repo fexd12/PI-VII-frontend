@@ -130,10 +130,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   background: white;
-  width: 250px;
+  width: 1000px;
   height: 350px;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
@@ -142,19 +142,28 @@ export default {
   align-items: center;
   margin-top: 35px;
 }
+@media (max-width: 450px) {
+  .sidemenu {
+    display: none;
+  }
+}
+
 .container_cores {
   padding-top: 5%;
   padding-left: 15%;
   margin-left: 15px;
 }
+
 .cores_alternar {
   justify-content: center;
   align-items: center;
 }
+
 .cores_atuais {
   flex-direction: row;
   margin-right: 50px;
 }
+
 .title1 {
   justify-content: center;
   align-items: center;
@@ -162,6 +171,7 @@ export default {
   font-weight: bold;
   margin-left: 30%;
 }
+
 .title2 {
   justify-content: center;
   align-items: center;
@@ -169,6 +179,7 @@ export default {
   font-weight: bold;
   margin-right: 16%;
 }
+
 label {
   display: inline-block;
   width: 160px;
@@ -185,6 +196,7 @@ label {
 input > label {
   right: auto;
 }
+
 .button1 {
   display: flex;
   padding: 10%;
