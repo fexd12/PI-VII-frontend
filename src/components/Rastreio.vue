@@ -7,15 +7,15 @@
       </div>
 
       <ul>
-        <li class="active" data-step="1">Envio</li>
-        <li class="active" data-step="2">Enviado para Transportadora</li>
-        <li class="active" data-step="3">Saiu para entrega</li>
-        <li class="active" data-step="4">Entregue</li>
+        <li class="" ref="1" data-step="1">Envio</li>
+        <li class="" ref="2" data-step="2">Enviado para Transportadora</li>
+        <li class="" ref="3" data-step="3">Saiu para entrega</li>
+        <li class="" ref="4" data-step="4">Entregue</li>
       </ul>
 
     </div>
     <div class="container2">
-      <h3 class="title">Destinatario</h3>
+      <h3 class="title">Destinatário</h3>
       <div class="subclass">
         <form action="">
           <div class="input-field">
@@ -91,20 +91,17 @@ export default {
         ...this.$store.getters.get_usuario_logado,
       };
     },
-    att_satus(){
-        const next = document.getElementById("next")
-        next.addEventListener('click')
+    att_status(status_id){
 
-        let activeStep = 1
-        let maxStep = 4
-    
-        activeStep = activeStep + 1
-        document.querySelector('data-step="${activeStep}"').classList.add('active')
+        let status = []
 
-        next.disabled = false
-        if(activeStep === maxStep){
-            next.disabled = true
-        } 
+        status['Envio']=1
+        status['Transportadora']=2
+        status['Entrega']=3
+        status['Entregue']=4
+
+        for(let i=1; i<=status[status_id];i++)
+            this.$refs[i].classList.add('active')
 
     },
     async get_pedido() {
@@ -112,6 +109,8 @@ export default {
         let response = await this.$http.get(`${this.$baseUrl}/pedidos/last`);
 
         this.pedido = { ...response.data };
+
+        this.att_status(this.pedido.status)
 
         console.log(this.items);
       } catch (error) {
