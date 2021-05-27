@@ -47,6 +47,13 @@ export default {
 .main {
   padding-top: 7vh;
 }
+@media (max-width: 450px) {
+  .main {
+    padding-top: 20%;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+}
 
 .container {
   background: white;
@@ -57,10 +64,21 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
+}
+@media (max-width: 450px) {
+  .container {
+    width: 100%;
+  }
 }
 
 .qrcode{
   width: 150px;
+}
+@media (max-width: 450px) {
+  .qrcode{
+    width: 85%;
+  }
 }
 
 </style>
