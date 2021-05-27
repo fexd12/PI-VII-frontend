@@ -95,6 +95,17 @@ export default {
   justify-content: center;
   align-items: center;
 }
+@media (max-width: 450px) {
+  .avatar {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20%;
+  }
+}
 
 .buttons {
   font-size: 18px;

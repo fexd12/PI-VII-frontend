@@ -84,12 +84,34 @@ video {
   align-items: center;
   justify-content: center;
 }
+@media (max-width: 450px) {
+  video {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .scanner-container {
   padding: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 30%;
+}
+@media (max-width: 450px) {
+  .scanner-container {
+    padding: unset;
+    padding-top: 50%;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0%;
+  }
 }
 
 .overlay-element {
@@ -134,6 +156,20 @@ video {
   z-index: 1;
   -webkit-animation: scanning 2s infinite;
   animation: scanning 2s infinite;
+}
+@media (max-width: 450px) {
+  .laser {
+    position: absolute;
+    width: 70%;
+    margin-left: 0%;
+    height: 1px;
+    margin-top: 70%;
+    left: 15%;
+    top: 0%;
+    z-index: 1;
+    -webkit-animation: scanning 2s infinite;
+    animation: scanning 2s infinite;
+  }
 }
 @-webkit-keyframes scanning {
   50% {
