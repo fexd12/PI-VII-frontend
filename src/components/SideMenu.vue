@@ -5,7 +5,7 @@
     </div>
     <div class="info">
       <a href="/user">
-        <p class="name">{{ ativoAtual.nome }}</p>
+        <p class="name">{{ usuario.nome }}</p>
       </a>
     </div>
     <div class="buttons">
@@ -59,14 +59,11 @@ export default {
   data: () => {
     return {
       usuario: {},
-      ativoAtual: {
-        nome: "",
-      },
     };
   },
   methods: {
     async get_usuario() {
-      this.ativoAtual = {
+      this.usuario= {
         ...this.$store.getters.get_usuario_logado,
       };
       //   console.log(this.ativoAtual)
