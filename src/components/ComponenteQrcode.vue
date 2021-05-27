@@ -75,15 +75,16 @@ export default {
             video: {
             facingMode: "environment"
             }
-        }).then(()=> {
+        }).then((stream)=> {
+            this.$refs.scanner.setAttribute("playsinline", true);
             // scanning = true;
             // qrResult.hidden = true;
             // btnScanQR.hidden = true;
             // canvasElement.hidden = false;
             //video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
 
-            // video.srcObject = stream;
-            // video.play();
+            this.$refs.scanner.srcObject = stream;
+            this.$refs.scanner.play();
             // tick();
             this.start()
             // scan();
