@@ -93,14 +93,7 @@ export default {
     },
     att_status(status_id){
 
-        let status = []
-
-        status['Envio']=1
-        status['Transportadora']=2
-        status['Entrega']=3
-        status['Entregue']=4
-
-        for(let i=1; i<=status[status_id];i++)
+        for(let i=1; i<=status_id;i++)
             this.$refs[i].classList.add('active')
 
     },
@@ -110,7 +103,7 @@ export default {
 
         this.pedido = { ...response.data };
 
-        this.att_status(this.pedido.status)
+        this.att_status(this.pedido.status_id)
 
         console.log(this.items);
       } catch (error) {
