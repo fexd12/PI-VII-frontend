@@ -139,6 +139,11 @@ export default {
   display: flex;
   font-weight: bold;
 }
+@media (max-width: 450px) {
+  .title {
+    font-size: 18px;
+  }
+}
 
 .main {
   justify-content: space-between;
@@ -148,15 +153,33 @@ export default {
   padding-left: 40vh;
   padding-right: 20vh;
 }
+@media (max-width: 450px) {
+  .main {
+    justify-content: space-between;
+    align-items: center;
+    display: block;
+    padding-top: 13vh;
+    padding-bottom: 10%;
+    padding-left: 10%;
+    padding-right: 10%;
+  }
+}
+
 .subclass {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 ul {
   list-style: none;
   display: flex;
   padding-top: 60px;
+}
+@media (max-width: 450px) {
+  ul {
+    margin-bottom: unset;
+  }
 }
 
 ul li {
@@ -181,6 +204,23 @@ ul li::before {
   left: calc(50% - 20px);
   z-index: 99;
 }
+@media (max-width: 450px) {
+  ul li::before {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    content: attr(data-step);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--ligth-grey);
+    color: #9fabae;
+    position: absolute;
+    top: -45px;
+    left: calc(50% - 5px);
+    z-index: 99;
+  }
+}
 
 ul li::after {
   content: "";
@@ -190,6 +230,17 @@ ul li::after {
   position: absolute;
   top: -30px;
   left: -50%;
+}
+@media (max-width: 450px) {
+  ul li::after {
+    content: "";
+    width: 112%;
+    height: 5px;
+    background: var(--ligth-grey);
+    position: absolute;
+    top: -30px;
+    left: -38%;
+  }
 }
 
 ul li:first-child::after {
@@ -207,6 +258,12 @@ ul li.active::after {
 
 ul li.active {
   color: var(--green);
+}
+@media (max-width: 450px) {
+  ul li.active {
+    font-size: 12px;
+    margin-left: -12px;
+  }
 }
 
 ul li.theactive::before {
@@ -239,6 +296,21 @@ ul li.theactive {
   padding-top: 30px;
   padding-bottom: 30px;
 }
+@media (max-width: 450px) {
+  .container1 {
+    background: white;
+    width: 100%;
+    height: 30%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    display: row;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 20px;
+  }
+}
 
 .container2 {
   background: white;
@@ -251,10 +323,25 @@ ul li.theactive {
   padding-top: 30px;
   padding-bottom: 30px;
 }
+@media (max-width: 450px) {
+  .container2 {
+    background: white;
+    width: 100%;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    justify-content: center;
+    align-items: center;
+    display: row;
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+
 .n-pedido {
   align-items: center;
   justify-content: center;
 }
+
 label {
   display: inline-block;
   width: 160px;
@@ -262,11 +349,25 @@ label {
   padding: 10px;
   font-weight: bold;
 }
+@media (max-width: 450px) {
+  label {
+    font-size: 14px;
+    padding: unset;
+  }
+}
 
 .input-field {
   padding-top: 10px;
   width: auto;
 }
+@media (max-width: 450px) {
+  .input-field {
+    padding-top: 10px;
+    padding-left: 10%;
+    width: auto;
+  }
+}
+
 input > label {
   right: auto;
 }
