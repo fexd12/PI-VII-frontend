@@ -65,7 +65,7 @@ export default {
         this.$refs.scanner,
         (result) => {
           if (result) {
-            this.$emit("decode", result.text);
+            this.$emit("decode",result.toString());
           }
         }
       );
