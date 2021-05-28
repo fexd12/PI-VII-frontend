@@ -11,34 +11,32 @@
     <div class="buttons">
       <button
         @click.prevent="redirect('inicio')"
-        v-if="usuario.id_funcao === 1"
       >
         Início
       </button>
       <button
         @click.prevent="redirect('pedidos')"
-        v-if="usuario.id_funcao === 1"
+        v-if="usuario.id_funcao === 2"
       >
         Pedidos
       </button>
       <button
         @click.prevent="redirect('scanner')"
-        v-if="usuario.id_funcao === 1 || usuario.id_funcao === 2"
       >
         Scanner
       </button>
       <button
         @click.prevent="redirect('gerador')"
-        v-if="usuario.id_funcao === 2"
+        v-if="usuario.id_funcao === 1"
       >
         Gerador
       </button>
-      <button @click.prevent="redirect('cores')" v-if="usuario.id_funcao === 2">
+      <button @click.prevent="redirect('cores')" v-if="usuario.id_funcao === 1">
         Cores
       </button>
       <button
         @click.prevent="redirect('contato')"
-        v-if="usuario.id_funcao === 1"
+        v-if="usuario.id_funcao === 2"
       >
         Contato
       </button>
