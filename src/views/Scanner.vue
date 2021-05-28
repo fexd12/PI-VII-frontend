@@ -2,7 +2,7 @@
   <div>
     <SideMenu class="sidemenu"></SideMenu>
     <SideMenuMobile class="sidemenumobile"></SideMenuMobile>
-    <Qrcoded @decode="(a,b,c) => onDecode(a,b,c)" @loaded="() => onLoaded()"/>
+    <Qrcoded @decode="(a) => onDecode(a)" @loaded="() => onLoaded()"/>
   </div>
 </template>
 
@@ -19,8 +19,18 @@ export default {
   },
 
   methods: {
-    onDecode(a,b,c){
-        console.log(a,b,c)
+    async onDecode(a){
+        // console.log(a);
+        
+        try {
+            await this.$http.post(`${this.$baseUrl}/envio/autenticar`,JSON.parse(a)).then(()=>{
+                alert('status do pedido atualizado')
+            })
+        } catch (error) {
+            console.log(error)
+            alert('erro ao atualizar o status do pedido')
+
+        }
     },
     onLoaded(){
         console.log('loaded')
