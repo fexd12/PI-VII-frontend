@@ -33,15 +33,15 @@
           <input type="text" name="username" id="username" v-model="ativoAtual.uf"/>
         </div>
         <div class="input-field">
-          <label> Senha Atual</label>
+          <label> Senha Atual: </label>
           <input type="password" name="password" id="passwordAatual" v-model="senhas.senha" />
         </div>
         <div class="input-field">
-          <label> Nova Senha </label>
+          <label> Nova Senha: </label>
           <input type="password" name="password" id="passwordNova" v-model="senhas.senha_nova" />
         </div>
         <div class="input-field">
-          <label> Repita Nova Senha </label>
+          <label> Repita Nova Senha: </label>
           <input type="password" name="password" id="passwordNovaRep" v-model="senhas.senha_confirma" />
         </div>
         <div class="button-salvar">
@@ -138,12 +138,25 @@ export default {
   align-items: center;
   padding: 40px;
 }
+@media (max-width: 450px) {
+  .container1 {
+    width: 100%;
+    text-align: center;
+  }
+}
 
 .main {
   justify-content: center;
   align-items: center;
   display: flex;
   padding-top: 15vh;
+}
+@media (max-width: 450px) {
+  .main {
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 10%;
+  }
 }
 
 label {
@@ -153,6 +166,12 @@ label {
   padding-bottom: 20px;
   font-weight: bold;
 }
+@media (max-width: 450px) {
+  label {
+    width: 100%;
+    padding-bottom: 0px;
+  }
+}
 
 .input-field {
   width: auto;
@@ -160,6 +179,13 @@ label {
 
 input > label {
   right: auto;
+}
+
+@media (max-width: 450px) {
+  input {
+    margin-bottom: 10px;
+    width: 100%;
+  }
 }
 
 .button-salvar{
