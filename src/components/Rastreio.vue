@@ -7,8 +7,8 @@
       </div>
 
       <ul>
-        <li class="active" ref="1" data-step="1">Entregue na Transportadora</li>
-        <li class="active" ref="2" data-step="2">Separado</li>
+        <li class="" ref="1" data-step="1">Entregue na Transportadora</li>
+        <li class="" ref="2" data-step="2">Separado</li>
         <li class="" ref="3" data-step="3">Saiu para entrega</li>
         <li class="" ref="4" data-step="4">Entregue</li>
       </ul>
