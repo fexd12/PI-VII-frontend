@@ -22,9 +22,11 @@
           v-model="selected.direcao_id"
           :options="optionsDirecao"
         ></b-form-select>
-      <button class="button1" @click="submitColor">
-        Alterar cor e direção
-      </button>
+        <div class="container-botao">
+          <button class="button1" @click="submitColor">
+            Alterar cor e direção
+          </button>
+        </div>
       </div>
     </div>
     <div class="container">
@@ -214,7 +216,6 @@ input > label {
 .button1 {
   display: flex;
   padding: 3%;
-  margin-left: 25%;
   margin-top: 3%;
   color: #fff;
   background-color: #28a145;
@@ -230,5 +231,10 @@ input > label {
   .table {
     margin-bottom: 0px;
   }
+}
+
+.container-botao {
+  justify-content: center;
+  display: flex;
 }
 </style>
