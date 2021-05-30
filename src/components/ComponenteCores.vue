@@ -134,13 +134,15 @@ export default {
 .container {
   background: white;
   width: 1000px;
-  height: 350px;
+  height: auto;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 35px;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 @media (max-width: 450px) {
   .container {
@@ -148,8 +150,6 @@ export default {
     height: auto;
     margin-top: 20%;
     margin-top: 20px;
-    padding-top: 30px;
-    padding-bottom: 30px;
   }
 }
 
